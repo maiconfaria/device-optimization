@@ -8,7 +8,7 @@
 (define-param dl 0.100                      )       ; Target source wavelenght bandwich
 (define-param dt (/ l 4)                    )       ; Time resolution of the output field - take a look on Nyquist–Shannon sampling theorem
 (define-param decay-by 0.01                 )       ; Criteria to end simulation. 0.01 is good enough
-(define-param pml_thick (/ l 2)             )       ; pml thickness. Its ok half wavelenght.
+(define-param pml_thick  l             )       ; pml thickness. Its ok half wavelenght.
 (define-param mode 1                        )       ; input source mode
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
