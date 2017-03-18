@@ -1,6 +1,6 @@
 ; Example file illustrating an eigenmode source, generating a waveguide mode
 ; (requires recent MPB version to be installed before Meep is compiled)
-; General template to calcule field transmition from the transmition source and a output volume
+; General template to calcule field transmition from the transmition source to an output volume
 ; Every space unit is in micro meters.
 
 ;; Don't think you must pass anything here;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
