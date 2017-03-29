@@ -23,6 +23,7 @@ parser.add_argument('--lx_dev', dest='lx_dev', default=5.0, help='Device X lengt
 parser.add_argument('--ly_dev', dest='ly_dev', default=5.0, help='Device Y length', type=float)
 parser.add_argument('-i', dest='device_file', default='device.csv', help='CVS file mapping the device refractive index')
 parser.add_argument('-o', dest='index_file', default='index.h5', help='H5 file mapping full domain the refractive index')
+
 parser.parse_args()
 input = parser.parse_args()
 
@@ -44,6 +45,7 @@ x_dev= input.x_dev
 y_dev= input.y_dev
 lx_dev=input.lx_dev
 ly_dev=input.ly_dev
+
 device_file=input.device_file
 index_file=input.index_file
 
@@ -52,7 +54,7 @@ if np.array_equal(subarray.shape, np.array([lx_dev/resolution,lx_dev/resolution]
   print "Device array matches"
 else:  
   print "Device Array size " + str(subarray.shape) + " do not match the given length and resolution ratio " + str(np.array([lx_dev/resolution,lx_dev/resolution]))  
-  exit(1)  
+  #exit(1)  
 
 def rf2i(x):
     global resolution

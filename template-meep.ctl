@@ -17,10 +17,10 @@
 
 (define-param index_file "index.h5"         ) ;;; (INDEX_FILE) h5 input, usually made on create_geo.py 
 (define-param field_file_append "field"     )       ; h5 output fields. These field should be used performe spectral analysis  
-(define-param LX 11.0                       ) ;;; (LX) Computational size dimensions
-(define-param LY 11.0                       ) ;;; (LY)
+(define-param LX 20.0                       ) ;;; (LX) Computational size dimensions
+(define-param LY 20.0                       ) ;;; (LY)
 (define-param LZ no-size                    )       ; Just for the sake of future 3d
-(define-param s_resol 0.04                   ) ;;; (RESOLUTION) Use the same as in create_geo.py. Not mandatory I think.
+(define-param s_resol 2.0                   ) ;;; (RESOLUTION) Use the same as in create_geo.py. Not mandatory I think.
 (define-param sx-less 0                     ) ;;; (X_IN=0) Source position. Left/button "xy" notation as in create_geo.py
 (define-param sx (+ sx-less (* 2 pml_thick)))       ;
 (define-param sy (/ LY 2)                   ) ;;; (Y_IN)
@@ -30,7 +30,7 @@
 (define-param source-ly (* s-ly 1.2)        )       ; The source must be slight bigger than the input waveguide.  
 (define-param source-lz no-size             )       ;
 (define-param ox-less LX                    ) ;;; (X_OUT=LX) Same for output
-(define-param ox (- ox-less (* 2 pml_thick)))       ;
+(define-param ox (- ox-less pml_thick l)    )       ;
 (define-param oy (/ LY 2)                   ) ;;; (Y_IN)
 (define-param oz (/ LZ 2)                   )       ; 
 (define-param out-lx 0                      )       ; 
@@ -46,7 +46,7 @@
 (define-param mode 1                        ) ; input source mode
 
 
-(define resol (/ 1 s_resol)) ; make that integer please
+(define resol (/ LX s_resol)) ; make that integer please
 (define f (/ 1 l) ) ; Central frequency
 (define df (/ dl (* l l))) ; Frequency Band
 (define source-x (- sx  (/ LX 2) )) ; Change from left/button to meep centered position references
