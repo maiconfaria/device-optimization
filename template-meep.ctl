@@ -5,8 +5,8 @@
 
 ;; Don't think you must pass anything here;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (define-param l 1.550                       )       ; Vacuum center source wavelenght
-(define-param dl 0.100                      )       ; Target source wavelenght bandwich
-(define-param dt (/ l 4)                    )       ; Time resolution of the output field - take a look on Nyquist–Shannon sampling theorem
+(define-param dl 0.06                      )       ; Target source wavelenght bandwich
+(define-param dt (/ (/ (* l l) dl) (* 2 2048))                    )       ; Time resolution of the output field - take a look on Nyquist–Shannon sampling theorem -talk with Leandro
 (define-param decay-by 0.01                 )       ; Criteria to end simulation. 0.01 is good enough
 (define-param pml_thick  l             )       ; pml thickness. Its ok half wavelenght.
 (define-param mode 1                        )       ; input source mode
@@ -29,22 +29,15 @@
 (define-param s-ly 1                        ) ;;; (LY_IN=1)
 (define-param source-ly (* s-ly 1.2)        )       ; The source must be slight bigger than the input waveguide.  
 (define-param source-lz no-size             )       ;
-(define-param ox-less LX                    ) ;;; (X_OUT=LX) Same for output
+(define-param ox-less LX                    ) ;;; (X_OUT=LX) Same for output observation section
 (define-param ox (- ox-less pml_thick l)    )       ;
 (define-param oy (/ LY 2)                   ) ;;; (Y_IN)
 (define-param oz (/ LZ 2)                   )       ; 
 (define-param out-lx 0                      )       ; 
-(define-param out-ly 1                      ) ;;; (LY_OUT)
+(define-param out-ly LY                      ) ;;; (LY_OUT)
 (define-param out-lz no-size                )       ;
 
 ;You do not need to read from here.
-(define-param l 1.550                       ) ; Vacuum center source wavelenght
-(define-param dl 0.100                      ) ; Target source wavelenght bandwich
-(define-param dt (/ l 4)                    ) ; Time resolution of the output field - take a look on Nyquist–Shannon sampling theorem
-(define-param decay-by 0.01                 ) ; Criteria to end simulation. 0.01 is good enough
-(define-param pml_thick l                   ) ; pml thickness. One wavelenght its ok.
-(define-param mode 1                        ) ; input source mode
-
 
 (define resol (/ LX s_resol)) ; make that integer please
 (define f (/ 1 l) ) ; Central frequency
@@ -56,7 +49,7 @@
 (define out-y (- oy  (/ LY 2) ))
 (define out-z (- oz  (/ LZ 2) ))
 
-
+(print "grepme " "dt " dt "\n" )
 
 (set! epsilon-input-file index_file) ; input refractive indexes
 
